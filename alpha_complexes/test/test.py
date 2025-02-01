@@ -18,7 +18,6 @@ def test_alpha_simplices():
 
     P = [[0,0,0]]
     dic = alpha_simplexes(P, 1, 0)
-    print(dic)
     assert list(dic.keys()) == [(0,)] and np.allclose(list(dic.values()), [0], rtol=1e-5, atol=1e-5), "Test failed"
 
     print("Test passed \n")
@@ -76,7 +75,7 @@ def test_alpha_simplices():
     
     flag = True
     for tupl, fil in dic.items():
-        if list(tupl) not in [simplex[0] for simplex in filtered_simplices] or not np.allclose(fil**2, simplex_tree.filtration(list(tupl)), rtol=1e-1, atol=1e-1): # The tolerance is not great, we admit. Rarely, the differs by 0.03, and often by 0.003.
+        if list(tupl) not in [simplex[0] for simplex in filtered_simplices] or not np.allclose(fil**2, simplex_tree.filtration(list(tupl)), rtol=1e-1, atol=1e-1): # The tolerance is not great, we admit. Rarely, the filtrations differ by ~0.03, and often by ~0.003.
                 flag = False
                 break
     assert flag, "Test failed"
@@ -84,7 +83,7 @@ def test_alpha_simplices():
     print("Test passed \n")
     plot_simplexes(P, dic.keys())
     print("-------------------- \n")
-    
+
 
     print("All tests passed")
 
