@@ -1,6 +1,5 @@
 import numpy as np
 from meb.circumcenter import circumcenter
-from meb.plot_sphere_points import plot_sphere_points
 
 def MEB(P):
     """
