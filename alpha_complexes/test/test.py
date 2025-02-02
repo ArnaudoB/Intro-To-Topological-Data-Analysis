@@ -56,7 +56,6 @@ def test_alpha_simplices():
     assert flag, "Test failed"
 
     print("Test passed \n")
-    plot_simplexes(P, dic.keys())
     print("-------------------- \n")
 
 
@@ -81,7 +80,6 @@ def test_alpha_simplices():
     assert flag, "Test failed"
 
     print("Test passed \n")
-    plot_simplexes(P, dic.keys())
     print("-------------------- \n")
 
 
