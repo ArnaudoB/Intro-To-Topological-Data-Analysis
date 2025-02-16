@@ -35,9 +35,3 @@ def simplexes(P, l, k):
     backtrack(0, [], [], 0)
     dic = dict(zip([tuple(tupl) for tupl in tuples if tupl != []], filtrations))
     return dic
-
-if __name__ == '__main__':
-    P = [[0,0,0], [1,0,0], [0,1,0], [0,0,1]]
-    dic = simplexes(P, 0.75, 3)
-    for tupl, fil in dic.items():
-        print(f"Simplex: {tupl} --> Filtration value: {fil:.3f}")

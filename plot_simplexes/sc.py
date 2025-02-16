@@ -15,7 +15,7 @@ def compute_diagram(action, file_complex):
         if n != 0:
             print("dimension", i, ":", n)
 
-def plot3d(action, file_complex, file_coordinates):
+def plot3d(action, file_complex, file_coordinates, output_file):
     points = np.loadtxt(file_coordinates)
     simplexes = [[], [], []]
     for line in file_complex:
@@ -37,14 +37,13 @@ def plot3d(action, file_complex, file_coordinates):
     ax.scatter3D(points2[:,0], points2[:,1], points2[:,2])
     # Plot edges
     ax.add_collection3d(Line3DCollection(lines=[points[e] for e in simplexes[1]]))
-    plt.savefig('plot_simplexes/simplexes_plot.jpg')
+    plt.savefig(output_file)
     plt.show()
-
-
 
 parser = argparse.ArgumentParser(description='Process a simplicial complex.')
 parser.add_argument('--complex', type=argparse.FileType('r'))
 parser.add_argument('--coordinates', type=argparse.FileType('r'))
+parser.add_argument('--output', type=str, required=True, help='Output file path for the saved plot')
 parser.add_argument('action', choices=['betti','plot3d'])
 args = parser.parse_args()
 if args.action in ['betti']:
@@ -59,4 +58,4 @@ elif args.action in ['plot3d']:
     if not args.coordinates:
         print("missing coordinates")
         sys.exit()
-    plot3d(args.action, args.complex, args.coordinates)
+    plot3d(args.action, args.complex, args.coordinates, args.output)
